@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Firebase Train Scheduler</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.7.0/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.7.0/firebaseui.css" />
+</head>
+
+<body>
+
+
+    <div class="jumbotron" id="top">
+        <h1>Any Time is Train Time</h1>
+        <h2>C'mon ride the train; hey, ride it!</h2>
+        <h3>I think I can, I think I can, I think I can</h3>
+        <div id="dateTime"></div>
+    </div>
+
+    <div class="section">
+        <div class="panel panel-default panel-primary">
+            <div class="panel-heading">Current Train Schedule</div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Train Name</th>
+                        <th>Destination</th>
+                        <th>Frequency (min)</th>
+                        <th>Next Arrival</th>
+                        <th>Minutes Away</th>
+                    </tr>
+                </thead>
+                <tbody id="trainSchedule">
+                </tbody>
+
+            </table>
+        </div>
+
+        <div class="panel panel-default panel-primary">
+            <div class="panel-heading">Add Train</div>
+            <form>
+                <div class="form-group">
+                    <label for="train" >Train Name</label>
+                    <input type="text" class="form-control" id="name-input">
+                </div>
+                <div class="form-group">
+                    <label for="destination">Destination</label>
+                    <input type="text" class="form-control" id="destination-input">
+                </div>
+                <div class="form-group">
+                    <div class="input-group date timepicker">
+                        <label for="inputTrainTime">First Train Time (HH:mm - military time)</label>
+                        <input data-date-format="HH:mm" class="form-control" id="time-input">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputFrequency">Frequency (min)</label>
+                    <input type="number" class="form-control" id="freq-input">
+                </div>
+                <button type="submit" id="click-button" class="btn btn-default btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
+
+
+</body>
+
+</html>
