@@ -18,6 +18,7 @@ var config = {
 firebase.initializeApp(config);
 
 var database = firebase.database();
+var provider = new firebase.auth.GoogleAuthProvider();
 
 var dataRef = firebase.database();
 
