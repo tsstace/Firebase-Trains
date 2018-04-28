@@ -3,10 +3,14 @@
 
 <head>
     <title>Firebase Train Scheduler</title>
+    <meta name="google-signin-client_id" content="167602757568-k6027cugtilquc0nh7oal29icsbs44ov.apps.googleusercontent.com">
+    <meta name="google-signin-cookiepolicy" content="single_host_origin">
+    <meta name="google-signin-scope" content="profile email">
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/2.7.0/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.7.0/firebaseui.css" />
@@ -14,7 +18,7 @@
 
 <body>
 
-
+    <div class="container">
     <div class="jumbotron" id="top">
         <h1>Any Time is Train Time</h1>
         <h2>C'mon ride the train; hey, ride it!</h2>
@@ -61,33 +65,20 @@
                 </div>
                 <div class="form-group">
                     <label for="inputFrequency">Frequency (min)</label>
-                    <input type="number" class="form-control" id="freq-input">
+                    <input type="number" class="form-control" id="freq-input">s
                 </div>
-                <button type="submit" id="click-button" class="btn btn-default btn-primary">Submit</button>
+
+                <button type="submit" id="add-button" class="btn btn-default btn-primary">Add train</button>
+                <button type="submit" id="delete-button" class="btn btn-default btn-primary">Delete train: enter name</button>
             </form>
         </div>
     </div>
-
+</div>
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyBtsdATLXshx-oWRsXNNbvSXBjD9ADEf-E",
-            authDomain: "sandbox-1cfaa.firebaseapp.com",
-            databaseURL: "https://sandbox-1cfaa.firebaseio.com",
-            projectId: "sandbox-1cfaa",
-            storageBucket: "sandbox-1cfaa.appspot.com",
-            messagingSenderId: "182746347442"
-        };
-        firebase.initializeApp(config);
-    </script>
-
     <script src="https://code.jquery.com/jquery.js"></script>
-
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
     <script type="text/javascript" src="assets/javascript/app.js"></script>
-
 
 </body>
 

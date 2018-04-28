@@ -5,7 +5,6 @@ function thisMoment() {
 thisMoment();
 
 // Initialize Firebase
-
 var config = {
   apiKey: "AIzaSyBtsdATLXshx-oWRsXNNbvSXBjD9ADEf-E",
   authDomain: "sandbox-1cfaa.firebaseapp.com",
@@ -20,8 +19,6 @@ firebase.initializeApp(config);
 var database = firebase.database();
 var provider = new firebase.auth.GoogleAuthProvider();
 
-var dataRef = firebase.database();
-
 // Initial Values
 var name = "";
 var destination = "";
@@ -32,7 +29,7 @@ var minutesAway = "";
 var sound = new Audio("assets/sound/button-click.mp3");
 
 // Capture Button Click
-$("#click-button").on("click", function (event) {
+$("#add-button").on("click", function (event) {
   event.preventDefault();
   sound.play();
 
@@ -52,7 +49,6 @@ $("#click-button").on("click", function (event) {
   $("input[data-date-format='HH:mm']").val("");
 
 
-
   // Insert the data entered into Firebase
   database.ref().push({
     name: name,
@@ -66,6 +62,15 @@ $("#click-button").on("click", function (event) {
 
 });
 
+$("#delete-button").on("click", function (event) {
+
+  name = $("#name-input").val().trim();
+
+  // Remove the data from Firebase
+  database.ref().orderByChild("name").equalTo(name).on('child_added', (snapshot) => {
+    snapshot.ref.remove()
+  });
+});
 //====================================================
 
 function myFunction(tt, fr) {
@@ -95,31 +100,27 @@ function myFunction(tt, fr) {
 myFunction();
 
 //
-//
 //  Return newly added train info to the screen
 //
-dataRef.ref().on("child_added", function (childSnapshot) {
+database.ref().on("child_added", function (childSnapshot) {
 
   $("#trainSchedule").append("<tr><td span id='name'> " + childSnapshot.val().name + "</td>" +
     " </span><td span id='destination'> " + childSnapshot.val().destination + "</td>" +
     " </span><td span id='frequency'> " + childSnapshot.val().frequency + "</td>" +
     " </span><td span id='next'> " + childSnapshot.val().nextTrainArrival + "</td>" +
-    " </span><td span id='minAway'> " + childSnapshot.val().minutesAway + "</td>" + " </span></div>");
+    " </span><td span id='minAway'> " + childSnapshot.val().minutesAway + "</td>");
 
-  // Handle an error scenario?
+  // Handle an error
 }, function (errorObject) {
   console.log("Errors handled: " + errorObject.code);
 });
 
-dataRef.ref().on("child_added", function (childSnapshot) {
-  console.log(childSnapshot.val().name);
-  console.log(childSnapshot.val().destination);
-  console.log(childSnapshot.val().trainTime);
-  console.log(childSnapshot.val().frequency);
-  console.log(childSnapshot.val().dateAdded);
+database.ref().on("child_added", function (childSnapshot) {
+//  console.log(childSnapshot.val().name);
+//  console.log(childSnapshot.val().destination);
+//  console.log(childSnapshot.val().trainTime);
+//  console.log(childSnapshot.val().frequency);
+//  console.log(childSnapshot.val().dateAdded);
 
 });
 
-dataRef.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function (childSnapshot) {
-
-});
