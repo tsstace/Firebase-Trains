@@ -1,6 +1,6 @@
 # Firebase-Trains
 
-This application lists train schedules hosted on a Firebase database via an API call.  The user view, add additional trains or delete existing routes.  The system also calculates the next arrival of the trains based on the current system time and the interval between routes.   
+This application lists train schedules hosted on a Firebase database via an API call.  The user may view, add additional trains or delete existing routes.  The system also calculates the next arrival of the trains based on the current system time and the interval between routes.   
 
 Requirements:
 
